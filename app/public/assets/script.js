@@ -52,7 +52,7 @@ function validateForm() {
 			.addClass('validate');
 		isValid = false;
 	};
-	$('input[type="hidden"]').each(() =>  {
+	$('input[type="hidden"]').each(function(){
 		if ( $(this).val() === '' ){
 			var parentID = $(this).parent().attr('id');
 			$('#' + parentID).bind('click', () => {removeAlerts(parentID)})
