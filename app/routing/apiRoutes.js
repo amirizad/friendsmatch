@@ -6,6 +6,7 @@ module.exports = (app,path) => {
 				return res.json(data);
 		});
 	});
+
 	app.get('/api/friends', (req,res) => {
 		fs.readFile('./app/data/friends.json', 'utf8', (err, data) => {
 				if(err){console.log(err)};
@@ -13,6 +14,7 @@ module.exports = (app,path) => {
 				return res.json(data);
 		});
 	});
+
 	app.get('/api/clear', (req,res) => {
 		fs.writeFile('./app/data/friends.json', '[]', (err) => {
 			if (err) throw err;
@@ -20,6 +22,7 @@ module.exports = (app,path) => {
 			return res.send('The existing friends list has been deleted!');
 		});
 	});
+
 	app.post('/api/friends', (req,res) => {
 		var user = req.body,
 				scores = user.scores,
@@ -34,7 +37,8 @@ module.exports = (app,path) => {
 				if (err) throw err;
 				console.log('The friends list updated!');
 			});
-
+			
+			// Scores Compare Lpgic
 			for ( i = 0 ; i < list.length ; i++ ){
 				comScores = list[i].scores;
 				var compare = 0;

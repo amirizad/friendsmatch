@@ -1,19 +1,20 @@
 $.ajax({url: "/api/questions", method: "GET"})
-.done(function(data) {
+.done((data) => {
 	generateQuestions($.parseJSON(data));
 });
 
-$("#submitbtn").on("click", function(){
+$("#submitbtn").on("click", () => {
 	if (validateForm()) {
 			var userData = {
 				name: $("#name").val(),
+				email: $("#email").val(),
 				photo: $("#photo").val(),
 				scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(),
 								$("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
 			}
 			var currentURL = window.location.origin;
 
-			$.post(currentURL + "/api/friends", userData, function(data){
+			$.post(currentURL + "/api/friends", userData, (data) => {
 				console.log(data);
 				$("#matchName").text(data.name);
 				var subject = `New%20Friend%20From%20Friend%20Finder: (${data.name})`;
@@ -23,38 +24,48 @@ $("#submitbtn").on("click", function(){
 				$("#resultsModal").modal('toggle');
 			});
 	} else {
-		alert("Please fill out all fields before submitting!");
+		$('#alert').removeClass('hide');
 	}
 	return false;
 });
-$('.validate').click(function(){
+
+$('.validate').click(() => {
 	$(this).removeClass('validate');
 });
+
+var emailpattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 function validateForm() {
 	var isValid = true;
 	if (!$('#name').val()){
-		$('#name').addClass('validate')
-			.click(function(){$(this).removeClass('validate')});
+		$('#name').bind('click', () => {removeAlerts('name')})
+			.addClass('validate');
 		isValid = false;
 	};
-	if (!$('#email').val()){
-		$('#email').addClass('validate')
-			.click(function(){$(this).removeClass('validate')});
+	if (!emailpattern.test($('#email').val())){
+		$('#email').bind('click', () => {removeAlerts('email')})
+			.addClass('validate');
 		isValid = false;
 	};
 	if (!$('#photo').val()){
-		$('#photo').addClass('validate')
-			.click(function(){$(this).removeClass('validate')});
+		$('#photo').bind('click', () => {removeAlerts('photo')})
+			.addClass('validate');
 		isValid = false;
 	};
-	$('input[type="hidden"]').each(function() {
+	$('input[type="hidden"]').each(() =>  {
 		if ( $(this).val() === '' ){
-			$(this).parent().addClass('validate')
-			.click(function(){$(this).removeClass('validate')});
+			var parentID = $(this).parent().attr('id');
+			$('#' + parentID).bind('click', () => {removeAlerts(parentID)})
+				.addClass('validate');
 			isValid = false;
 		};
 	});
 	return isValid;
+};
+
+function removeAlerts(elemID){
+	$('#' + elemID).removeClass('validate');
+	$('#alert').addClass('hide');
 };
 
 function generateQuestions(data){
@@ -81,7 +92,7 @@ function generateQuestions(data){
 			$('<input>').attr(radio).appendTo($rating);
 			$('<label>').attr(lbl).appendTo($rating);
 		};
-		$rating.bind('change', function(){
+		$rating.bind('change', () => {
 			var $question = $(this).find("input[type='hidden']");
 			var qNo = $question.attr('data-number');
 			$question.val($('input[name=rating' + qNo + ']:checked', '#question' + qNo).val());
