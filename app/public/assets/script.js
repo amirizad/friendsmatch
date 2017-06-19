@@ -92,7 +92,7 @@ function generateQuestions(data){
 			$('<input>').attr(radio).appendTo($rating);
 			$('<label>').attr(lbl).appendTo($rating);
 		};
-		$rating.bind('change', () => {
+		$rating.bind('change', function(){
 			var $question = $(this).find("input[type='hidden']");
 			var qNo = $question.attr('data-number');
 			$question.val($('input[name=rating' + qNo + ']:checked', '#question' + qNo).val());
