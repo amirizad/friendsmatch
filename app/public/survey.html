@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FriendFinder</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+  	<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h2>Friend Finder Questions</h2>
+			<h3><strong>I Need To Know about You to find the best match!</strong></h3>
+			<hr>
+		</div>
+		<form class="form-horizontal row">
+			<div class="form-group">
+				<label for="name" class="col-sm-1 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="name" placeholder="Your Name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-1 control-label">Email</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="email" placeholder="Your Email Address" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="photo" class="col-sm-1 control-label">Photo</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="photo" placeholder="Link to Your Photo Image" required>
+				</div>
+			</div>
+			<hr>
+		</form>
+		<div id="questions" class="row"></div>
+		<div class="row">
+			<button type="submit" class="btn btn-primary btn-lg btn-block" id="submitbtn"><i class="fa fa-check-circle" aria-hidden="true"></i>Submit</button>
+			<hr>
+		</div>
+		<div>
+			<footer class="footer">
+				<div class="container">
+						<p><a href="/">Home</a> | <a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder" target="_blank">GitHub Repo</a></p>
+				</div>
+			</footer>
+		</div>	
+	</div>
+
+	<div id="resultsModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">×</button>
+	        <h2 class="modal-title"><strong>Best Match</strong></h2>
+	      </div>
+	      <div class="modal-body">
+	        <h2 id="matchName"></h2>
+	        <h2><a id="matchEmail" href=""></a></h2>
+	        <img id="matchImg" src="" alt="">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<script src="assets/script.js"></script>
+</body>
+</html>

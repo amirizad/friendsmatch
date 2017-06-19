@@ -1,0 +1,76 @@
+body{ margin: 20px; }
+fieldset, label { margin: 0; padding: 0; }
+#questions{
+	padding: 0 20px 20px;
+}
+#questions .row{
+	border-top: 1px dotted rgba(255, 215 ,0 , 0.3);
+}
+#questions .row:last-child{
+	border-bottom: 1px dotted rgba(255, 215 ,0 , 0.3);
+}
+.validate{
+	background-color: rgba(255, 50, 0, 0.1);
+  border-radius: 4px;	
+}
+.number {
+	float: left;
+	margin-top: 5px;
+	margin-right: 10px;
+	border-radius: 50%;
+	width: 34px;
+	height: 34px;
+	line-height: 32px;
+	border: 1px solid gold;
+	color: #000066;
+	text-align: center;
+	font-size: 18px;
+}
+.qtext{
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 45px;
+	float: left;
+}
+.ans-val{
+	line-height: 45px;
+	margin-left: 10px;
+	font-size: 16px;
+	padding: 5px;
+	background-color: gold;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+}
+.starsblock{
+	padding-left: 20px;
+	height: 45px;
+	float: right;
+}
+.rating {
+	border: none;
+	font-size: 20px;
+}
+.rating > input { display: none; } 
+.rating > label:before { 
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+.rating > .half:before { 
+	content: "\f089";
+	position: absolute;
+}
+.rating > label { 
+	color: #ddd; 
+	float: right; 
+}
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 	

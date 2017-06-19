@@ -1,0 +1,23 @@
+{
+  "name": "amirizad",
+  "version": "1.0.0",
+  "description": "Friend Finder - Node and Express Servers.",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirizad/friendsmatch"
+  },
+  "author": "amirizad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirizad/friendsmatch"
+  },
+  "homepage": "https://github.com/amirizad/friendsmatch",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
